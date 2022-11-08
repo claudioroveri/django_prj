@@ -37,4 +37,14 @@ git add .
 git commit -m "descricao do commit"
 git push local master
  
+#Voltar versao
+git log ==> escolher versao do commit (hash)
+git checkout <hash>
+
+#Voltar para a branch principal
+git branch master
+git checkout master
+git add .
+git commit ""
+git push local master
 
