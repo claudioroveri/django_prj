@@ -15,3 +15,20 @@ python manage.py migrate
 
 #Tutorial de criação de sessão 
 #https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Django/Authentication#ativando_a_autentica%C3%A7%C3%A3o
+
+
+
+#Instruções para criação e atualização do GITHub
+# Linka com o repositorio remoto (criar repositorio do site do GIT)
+git remote add local https://github.com/claudioroveri/django_prj.git 
+
+# Adiciona todos os arquivos para subir no git
+git add . 
+
+# Confirma todos os arquivos alterados para subirem no git
+git commit -m "Primeiro commit"
+
+# Envia arquivos alterado para o repositorio do git
+git push local master
+
+

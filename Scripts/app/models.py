@@ -16,7 +16,7 @@ class Marca(models.Model):
     luxo = models.BooleanField(default=False)
 
 # Modelo Cliente utilizado na aula de Python
-# Atributo usuario é "chave estrangeira" para o classe Usuario
+# Atributo usuario é "chave estrangeira" para o classe Usuario x
 class Cliente(models.Model):
     nome = models.CharField(max_length=100)
     endereco = models.CharField(max_length=200)
