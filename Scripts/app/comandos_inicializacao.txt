@@ -32,3 +32,9 @@ git commit -m "Primeiro commit"
 git push local master
 
 
+#Rotina de arquivos alterados
+git add .
+git commit -m "descricao do commit"
+git push local master
+
+
