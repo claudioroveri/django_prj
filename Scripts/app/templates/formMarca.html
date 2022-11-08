@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}" />
+
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-12 usuario">
+            {% if user.is_authenticated %}
+                Olá, {{ user.first_name }} 
+                (<a href="/accounts/logout/">Sair</a>)
+            {% else %}
+                <a href="/accounts/login/">Entrar</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-6 m-auto pt-2 pb-2 text-center titulo">
+        ADICIONAR MARCAS
+    </div>
+
+ 
+
+    <div class="col-9 pt-4 pb-2 offset-4">
+        
+        <!--{{form.as_p}}-->
+        <form name="form" id="form" method="post"  action="{% if db %}/updateMarca/{{db.id}}/{%else%}/createMarca/{% endif %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-lg-3">
+                        Descricao: <br> 
+                        {{form.descricao}}
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3">
+                        Origem: <br> 
+                        {{form.origem}}
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-5 col-md-5 col-lg-5">
+                        {{form.luxo}} <label>Luxo</label>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-5 col-md-4=5 col-lg-5 text-center">
+                        <input type="submit" class="btn btn-success" value="Salvar">
+                        <a href="/marca/" class="btn btn-success">Voltar</a>
+                    </div>
+                </div>
+            </div>       
+        </form>
+    </div>
+</body>
+</html>

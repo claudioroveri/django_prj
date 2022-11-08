@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>Cadastro de Usuário</h1>
+    </div>
+
+    <div class="col-9 pt-4 pb-2 offset-4">
+        {% csrf_token %}
+        <form name="form" id="form" method="post"  action="/createUsuario/">
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    Email: <br> 
+                    {{campos.email}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    Senha: <br>
+                    {{campos.senha}}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3 text-center">
+                    <input type="submit" class="btn btn-success" value="Salvar">
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+</body>
+</html>

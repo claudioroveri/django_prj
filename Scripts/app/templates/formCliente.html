@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}" />
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-12  usuario">
+            {% if user.is_authenticated %}
+                Olá, {{ user.first_name }} 
+                (<a href="/accounts/logout/">Sair</a>)
+            {% else %}
+                <a href="/accounts/login/">Entrar</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-6 m-auto pt-2 pb-2 text-center titulo">
+        ADICIONAR CLIENTE
+    </div>
+
+    <div class="col-9 pt-4 pb-2 offset-4">
+       
+        <form name="form" id="form" method="post"  action="/createCliente/">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    Nome: <br> 
+                    {{campos.nome}}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    Endereço: <br> 
+                    {{campos.endereco}}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    Idade: <br> 
+                    {{campos.idade}}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    {{campos.ativo}} Ativo              
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3 text-center">
+                    <input type="submit" class="btn btn-success" value="Salvar">
+                    <a href="/" class="btn btn-success">Voltar</a>
+                </div>
+            </div>
+          
+        </form>
+    </div>
+</body>
+
+</html>

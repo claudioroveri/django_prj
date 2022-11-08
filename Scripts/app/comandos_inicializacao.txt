@@ -1,0 +1,17 @@
+python -m venv venv
+cd venv/Scripts
+activate
+pip install django
+pip install django djangorestframework
+pip install mysqlclient
+pip install requests
+
+django-admin startproject project .
+python manage.py startapp app
+python manage.py runserver
+
+python manage.py makemigrations
+python manage.py migrate
+
+#Tutorial de criação de sessão 
+#https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Django/Authentication#ativando_a_autentica%C3%A7%C3%A3o
