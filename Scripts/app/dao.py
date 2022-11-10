@@ -1,4 +1,5 @@
-from app.models import Carros, Marca
+from app.model.Carros import Carros
+from app.model.Marca import Marca
 from django.db.models import Count
 
 class CarrosDAO:

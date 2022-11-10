@@ -1,5 +1,8 @@
 from django.forms import ModelForm
-from app.models import Carros, Marca, Cliente, Usuario
+from app.model.Carros import Carros
+from app.model.Marca import Marca 
+from app.model.Cliente import Cliente 
+from app.model.Usuario import Usuario
 from django.contrib.auth.models import User
 
 # Aqui são criados os Beans para os formularios

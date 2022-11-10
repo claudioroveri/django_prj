@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from app.models import Carros, Marca, Usuario
+from app.model.Carros import Carros
+from app.model.Marca import  Marca
+from app.model.Usuario import Usuario
 
 # Classe que serve para simplificar a estrutura 
 # da classe Model

@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect 
-from app.models import Carros, Marca, Usuario
+from app.model.Carros import Carros
+from app.model.Marca import Marca
+from app.model.Usuario import Usuario
 from app.forms import CarrosForm, MarcaForm, UsuarioForm, ClienteForm, UserForm
 from app.dao import CarrosDAO, MarcaDAO
 from rest_framework import viewsets
