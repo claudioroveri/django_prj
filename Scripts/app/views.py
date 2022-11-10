@@ -27,11 +27,11 @@ def carro(request):
     #data['db'] = Carros.objects.all()
 
     # Vindo de uma API REST via requisição GET
-    #r = requests.get("http://localhost:8000/api/v1/carros")
-    #data['db'] = r.json()
+    r = requests.get("http://localhost:8000/api/v1/carros")
+    data['db'] = r.json()
 
     #Listagem personalizada
-    data['db'] = CarrosDAO.listarCarros()
+    #data['db'] = CarrosDAO.listarCarros()
     data['sumario'] = CarrosDAO.getMaxMarca()
     return render(request, 'listaCarros.html', data)
 
@@ -85,11 +85,11 @@ def marca(request):
     #data['db'] = Carros.objects.all()
 
     # Vindo de uma API REST via requisição GET
-    #r = requests.get("http://localhost:8000/api/v1/carros")
-    #data['db'] = r.json()
+    r = requests.get("http://localhost:8000/api/v1/carros")
+    data['db'] = r.json()
 
     #Listagem personalizada
-    data['db'] = MarcaDAO.listarMarcas()
+    #data['db'] = MarcaDAO.listarMarcas()
     return render(request, 'listaMarca.html', data)
 
 def delete(request, pk):
