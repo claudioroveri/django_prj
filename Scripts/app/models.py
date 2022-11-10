@@ -1,3 +1,4 @@
+# CLASSES MODELO TRANSFERIDAS PARA O DIRETÓRIO /app/model/ 
 #import this
 #from django.db import models
 

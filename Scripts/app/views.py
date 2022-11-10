@@ -2,8 +2,13 @@ from django.shortcuts import render, redirect
 from app.model.Carros import Carros
 from app.model.Marca import Marca
 from app.model.Usuario import Usuario
-from app.forms import CarrosForm, MarcaForm, UsuarioForm, ClienteForm, UserForm
-from app.dao import CarrosDAO, MarcaDAO
+from app.controller.CarrosForm import CarrosForm
+from app.controller.MarcaForm import MarcaForm
+from app.controller.UsuarioForm import UsuarioForm 
+from app.controller.ClienteForm import ClienteForm 
+from app.controller.UserForm import UserForm
+from app.model.CarrosDAO import CarrosDAO
+from app.model.MarcaDAO import MarcaDAO
 from rest_framework import viewsets
 from app.api.serializers import CarrosSerializer, MarcaSerializer, UsuarioSerializer
 import requests, json
