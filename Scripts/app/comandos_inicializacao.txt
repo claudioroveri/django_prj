@@ -1,5 +1,5 @@
 python -m venv venv
-cd venv/Scripts
+cd venv/Scripts.
 activate
 pip install django
 pip install django djangorestframework
