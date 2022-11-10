@@ -9,7 +9,7 @@ from app.controller.ClienteForm import ClienteForm
 from app.controller.UserForm import UserForm
 from app.model.CarrosDAO import CarrosDAO
 from app.model.MarcaDAO import MarcaDAO
-from rest_framework import viewsets
+from rest_framework.viewsets import ModelViewSet
 from app.api.serializers import CarrosSerializer, MarcaSerializer, UsuarioSerializer
 import requests, json
 from django.contrib.auth.decorators import login_required #forma automática de exigir login de acesso
@@ -33,7 +33,7 @@ def carro(request):
     #Listagem personalizada
     data['db'] = CarrosDAO.listarCarros()
     data['sumario'] = CarrosDAO.getMaxMarca()
-    return render(request, 'cadCarro.html', data)
+    return render(request, 'listaCarros.html', data)
 
 # Muda um pouco a forma padrão de obter os campos porque 
 # usa o modelo de criacao de usuario do do framework
@@ -90,7 +90,7 @@ def marca(request):
 
     #Listagem personalizada
     data['db'] = MarcaDAO.listarMarcas()
-    return render(request, 'cadMarca.html', data)
+    return render(request, 'listaMarca.html', data)
 
 def delete(request, pk):
      db = Carros.objects.get(pk=pk)
@@ -200,16 +200,16 @@ def updateMarca(request, pk):
         return redirect('marca')
 
 
-class CarrosViewSet(viewsets.ModelViewSet):
+class CarrosViewSet(ModelViewSet):
     queryset = Carros.objects.all()
     serializer_class = CarrosSerializer
 
-class MarcaViewSet(viewsets.ModelViewSet):
+class MarcaViewSet(ModelViewSet):
     queryset = Marca.objects.all()
     serializer_class = MarcaSerializer
 
 
-class UsuarioViewSet(viewsets.ModelViewSet):
+class UsuarioViewSet(ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
 
