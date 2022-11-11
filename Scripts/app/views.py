@@ -101,7 +101,7 @@ def home(request):
     return render(request, 'menu.html', {})
 
 # Apaga os dados utilizando API REST do django
-def delete2(request, pk):
+def deleteCarros(request, pk):
     r = requests.delete("http://localhost:8000/api/v1/carros/"+ str(pk))
     #print(r)
     return redirect('carro')
