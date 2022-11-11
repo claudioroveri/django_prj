@@ -52,7 +52,11 @@
                         <th>{{dbs.id}}</th>
                         <td>{{dbs.descricao}}</td>
                         <td>{{dbs.origem}}</td>
-                        <td>{{dbs.luxo}}</td>
+                        {% if dbs.luxo == True %}
+                            <td>Sim</td>
+                        {% else %}
+                            <td>Não</td>
+                        {% endif %}
                         <td style="text-align:center">
                             <a href="/editMarca/{{dbs.id}}/" class="btn btn-primary">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
