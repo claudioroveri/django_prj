@@ -7,13 +7,15 @@ from app.controller.MarcaForm import MarcaForm
 from app.controller.UsuarioForm import UsuarioForm 
 from app.controller.ClienteForm import ClienteForm 
 from app.controller.UserForm import UserForm
+from app.controller.UserGroupForm import UserGroupForm
 from app.model.CarrosDAO import CarrosDAO
 from app.model.MarcaDAO import MarcaDAO
+from app.model.GroupDAO import GroupDAO
 from rest_framework.viewsets import ModelViewSet
 from app.api.serializers import CarrosSerializer, MarcaSerializer, UsuarioSerializer
 import requests, json
 from django.contrib.auth.decorators import login_required #forma automática de exigir login de acesso
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 # Aqui são criadas as views vinculadas com os models.
 # Aqui também se prepara os dados que sera vinculados
@@ -41,11 +43,15 @@ def addUser(request):
   
         # Create user and save to the database
         user = User.objects.create_user(request.POST.get('username'), request.POST.get('email'), request.POST.get('password'))
-
+        
         # Update fields and then save again
         user.first_name = request.POST.get('first_name')
         user.last_name = request.POST.get('last_name')
         user.save()
+
+        # Adicionando usuário ao grupo
+        grupo = Group.objects.get(pk=request.POST.get('grupo')) 
+        grupo.user_set.add(user)
         
         # Não funcionou a gravação da senha criptografada
         #form = UserForm(request.POST or None)  
@@ -60,6 +66,7 @@ def addUser(request):
 def createUser(request):
     data = {}
     data['form'] = UserForm()
+    data['groups'] = GroupDAO.listarGrupos()
     return render(request, 'registration/createUser.html', data)
 
 def usuario(request):
