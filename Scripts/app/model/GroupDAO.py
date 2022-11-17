@@ -1,4 +1,3 @@
-from django.db.models import Count
 from django.contrib.auth.models import Group
 
 class GroupDAO:
