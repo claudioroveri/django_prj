@@ -2,7 +2,7 @@ from django.contrib.auth.models import Group
 
 class GroupDAO:
 
-    # Lista os carros de forma personalizada
+    # Lista os grupos de usuarios
     def listarGrupos():
         lista = []
         dados = Group.objects.all()

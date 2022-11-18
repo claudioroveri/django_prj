@@ -4,4 +4,4 @@ from app.model.Cliente import Cliente
 class ClienteForm(ModelForm):
     class Meta:
         model = Cliente
-        fields = ['nome', 'endereco', 'idade', 'ativo']
+        fields = ['nome', 'endereco', 'idade', 'ativo', 'usuario']

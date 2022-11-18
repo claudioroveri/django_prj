@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from app.views import formUsuario, formCliente, home, form, formMarca, create, createMarca, createCliente, carro, marca, view, delete, deleteMarca, deleteCarros, update, updateMarca, edit, editMarca, formUsuario, usuario, removeUsuario, createUser, addUser
+from app.views import formUsuario, formCliente, home, form, formMarca, cliente, create, createMarca, createCliente, carro, marca, view, delete, deleteMarca, deleteCliente, deleteCarros, update, updateMarca, edit, editMarca, formUsuario, usuario, removeUsuario, createUser, addUser
 from django.contrib import admin
 
 
@@ -24,6 +24,7 @@ urlpatterns = [
     path('', home, name='home'),
     path('carro/', carro, name='carro'),
     path('marca/', marca, name='marca'),
+    path('cliente/', cliente, name='cliente'),
     path('usuarios/', usuario, name='usuario'),
     path('usuarios/<int:pk>/', removeUsuario, name='removeUsuario'),
     path('form/', form, name='form'),
@@ -33,6 +34,7 @@ urlpatterns = [
     path('delete/<int:pk>/', delete, name='delete'),
     path('deleteCarros/<int:pk>/', deleteCarros, name='delete2'),
     path('deleteMarca/<int:pk>/', deleteMarca, name='deleteMarca'),
+    path('deleteCliente/<int:pk>/', deleteCliente, name='deleteCliente'),
     path('edit/<int:pk>/', edit, name='edit'),
     path('editMarca/<int:pk>/', editMarca, name='editmarca'),
     path('update/<int:pk>/', update, name='update'),

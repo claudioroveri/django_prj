@@ -1,5 +1,5 @@
 from rest_framework.routers import DefaultRouter
-from app.views import CarrosViewSet, MarcaViewSet, UsuarioViewSet
+from app.views import CarrosViewSet, MarcaViewSet, UsuarioViewSet, ClienteViewSet
 
 app_name = 'api'
 
@@ -10,5 +10,6 @@ router = DefaultRouter(trailing_slash=False)
 router.register(r'carros', CarrosViewSet)
 router.register(r'marca', MarcaViewSet)
 router.register(r'usuarios', UsuarioViewSet)
+router.register(r'cliente', ClienteViewSet)
 
 urlpatterns = router.urls

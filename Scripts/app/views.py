@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from app.model.Carros import Carros
 from app.model.Marca import Marca
 from app.model.Usuario import Usuario
+from app.model.Cliente import Cliente
 from app.controller.CarrosForm import CarrosForm
 from app.controller.MarcaForm import MarcaForm
 from app.controller.UsuarioForm import UsuarioForm 
@@ -9,10 +10,11 @@ from app.controller.ClienteForm import ClienteForm
 from app.controller.UserForm import UserForm
 from app.controller.UserGroupForm import UserGroupForm
 from app.model.CarrosDAO import CarrosDAO
+from app.model.ClienteDAO import ClienteDAO
 from app.model.MarcaDAO import MarcaDAO
 from app.model.GroupDAO import GroupDAO
 from rest_framework.viewsets import ModelViewSet
-from app.api.serializers import CarrosSerializer, MarcaSerializer, UsuarioSerializer
+from app.api.serializers import CarrosSerializer, MarcaSerializer, UsuarioSerializer, ClienteSerializer
 import requests, json
 from django.contrib.auth.decorators import login_required #forma automática de exigir login de acesso
 from django.contrib.auth.models import User, Group
@@ -36,6 +38,21 @@ def carro(request):
     data['db'] = CarrosDAO.listarCarros()
     data['sumario'] = CarrosDAO.getMaxMarca()
     return render(request, 'listaCarros.html', data)
+
+@login_required 
+def cliente(request):
+    data={}
+    
+    # Vindo de um modelo comum
+    #data['db'] = Carros.objects.all()
+
+    # Vindo de uma API REST via requisição GET
+    #r = requests.get("http://localhost:8000/api/v1/carros")
+    #data['db'] = r.json()
+
+    #Listagem personalizada
+    data['db'] = ClienteDAO.listarClientes()
+    return render(request, 'listaClientes.html', data)
 
 # Muda um pouco a forma padrão de obter os campos porque 
 # usa o modelo de criacao de usuario do do framework
@@ -118,6 +135,11 @@ def deleteMarca(request, pk):
     #print(r)
     return redirect('marca')
 
+def deleteCliente(request, pk):
+    r = requests.delete("http://localhost:8000/api/v1/cliente/"+ str(pk))
+    #print(r)
+    return redirect('cliente')
+
 def form(request):
     data = {}
     data['form'] = CarrosForm()
@@ -143,6 +165,7 @@ def formUsuario(request):
 def formCliente(request):
     dadosCliente={}
     dadosCliente['campos'] = ClienteForm()
+  
 
     return render(request, 'formCliente.html', dadosCliente )
 
@@ -162,10 +185,9 @@ def createMarca(request):
 
 def createCliente(request):
     form = ClienteForm(request.POST or None)  
-    
     if form.is_valid():
         form.save()
-        return redirect('formCliente')
+        return redirect('cliente')
 
 def view(request,pk):
     data={}
@@ -219,4 +241,8 @@ class MarcaViewSet(ModelViewSet):
 class UsuarioViewSet(ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
+
+class ClienteViewSet(ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
 
