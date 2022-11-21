@@ -40,7 +40,7 @@ git push local master
 git log ==> escolher versao do commit (hash)
 git checkout <hash>
 
-#Voltar para a branch principal (master)
+#Voltar para a branch principal (master) -
 git branch master
 git checkout master
 git commit -a -m "Comentário"
