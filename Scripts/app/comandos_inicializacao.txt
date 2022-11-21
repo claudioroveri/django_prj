@@ -46,3 +46,22 @@ git checkout master
 git commit -a -m "Comentário"
 git push local master 
 
+# criar uma branch local a partir de um commit (obtido através do git log)
+git branch 'branch_auxiliar' [codigo do commit]
+
+# alternar para branch auxiliar
+git checkout 'branch_auxiliar'
+
+# realiza commit na branch auxiliar
+git add .
+git commit -a -m "Teste"
+
+# volta para a branch master
+git checkout master
+
+# faz o merge da branch auxiliar na branch principal
+git merge 'branch_auxiliar'
+
+# faz o push para o repositorio remoto
+git push local master
+
